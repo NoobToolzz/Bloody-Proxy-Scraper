@@ -1,6 +1,6 @@
 import os, time, requests, pystyle, random, datetime
 
-from pystyle import *
+from pystyle import Write, Colors, Colorate
 from console.utils import set_title
 
 def cls():
@@ -107,7 +107,7 @@ all_urls = [
     
 
 cls()
-os.system('mode 85, 25')
+# os.system('mode 85, 25')
 banner = '''
 ██████╗ ██╗      ██████╗  ██████╗ ██████╗ ██╗   ██╗     
 ██╔══██╗██║     ██╔═══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝     
@@ -146,27 +146,75 @@ http = open('proxies-http.txt','wb')
 socks4 = open('proxies-socks4.txt','wb')
 socks5 = open('proxies-socks5.txt','wb')
 allp = open('proxies-all.txt','wb')
-scraped_sites = 0
+# scraped_sites = 0
 
 # Scrape HTTP(s) proxies from their sources 
-scrape_http = requests.get(http_urls)
+http_proxies = []
+for url in http_urls:
+    try:
+        scrape_http = requests.get(url)
+        # Process the scraped proxies here
+        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped HTTP Proxies from {url}!")
+        Write.Print(f"\n[?] Scraped HTTP Proxies from {url}!\n", Colors.green_to_blue, interval=0)
+        http_proxies.extend(scrape_http.text.strip().split('\n'))
+    except requests.exceptions.RequestException as e:
+        # Handle any errors that occur during the request
+        Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped HTTP Proxies!")
-Write.Print("\n[?] Scraped HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print("[?] Scraped HTTP Proxies!\n", Colors.green_to_white, interval=0)
+Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
+time.sleep(1)
 
 # Scrape SOCKS4 proxies from their sources
-scrape_socks4 = requests.get(socks4_urls)
+socks4_proxies = []
+for url in socks4_urls:
+    try:
+        scrape_socks4 = requests.get(url)
+        # Process the scraped proxies here
+        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS4 Proxies from {url}!")
+        Write.Print(f"\n[?] Scraped SOCKS4 Proxies from {url}!\n", Colors.green_to_blue, interval=0)
+        socks4_proxies.extend(scrape_socks4.text.strip().split('\n'))
+    except requests.exceptions.RequestException as e:
+        # Handle any errors that occur during the request
+        Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS4 Proxies!")
-Write.Print("[?] Scraped SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print("[?] Scraped SOCKS4 Proxies!\n", Colors.green_to_white, interval=0)
+Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
+time.sleep(1)
 
 # Scrape SOCKS5 proxies from their sources
-scrape_socks5 = requests.get(socks5_urls)
+socks5_proxies = []
+for url in socks5_urls:
+    try:
+        scrape_socks5 = requests.get(url)
+        # Process the scraped proxies here
+        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS5 Proxies from {url}!")
+        Write.Print(f"\n[?] Scraped SOCKS5 Proxies from {url}!\n", Colors.green_to_blue, interval=0)
+        socks5_proxies.extend(scrape_socks5.text.strip().split('\n'))
+    except requests.exceptions.RequestException as e:
+        # Handle any errors that occur during the request
+        Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS5 Proxies!")
-Write.Print("[?] Scraped SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print("[?] Scraped SOCKS5 Proxies!\n", Colors.green_to_white, interval=0)
+Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
+time.sleep(1)
 
-# All Proxies Sources
-scrape_all = requests.get(all_urls)
+# Scrape ALL proxies from their sources
+all_proxies = []
+for url in all_urls:
+    try:
+        scrape_all = requests.get(url)
+        # Process the scraped proxies here
+        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped ALL Proxies from {url}!")
+        Write.Print(f"\n[?] Scraped ALL Proxies from {url}!\n", Colors.green_to_blue, interval=0)
+        all_proxies.extend(scrape_all.text.strip().split('\n'))
+    except requests.exceptions.RequestException as e:
+        # Handle any errors that occur during the request
+        Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped ALL Proxies!")
-Write.Print("[?] Scraped ALL Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print("[?] Scraped ALL Proxies!\n", Colors.green_to_white, interval=0)
+Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
+time.sleep(1)
 
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Finished Scraping Proxies!")
 Write.Print(f"[!] Finished Scraping Proxies!\n", Colors.green_to_white, interval=0)
@@ -177,23 +225,28 @@ Write.Print("[?] Writing Proxies In Files . . .\n\n", Colors.red_to_yellow, inte
 time.sleep(1)
 
 # Writing Proxies In Their Files
-# Writing HTTP Proxies
-http.write(scrape_socks4.content)
+
+# Write HTTP(s) proxies to file
+for proxy in http_proxies:
+    http.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(1)
 
-# Writing SOCKS4 Proxies
-socks4.write(scrape_socks4.content)
+# Write SOCKS4 proxies to file
+for proxy in socks4_proxies:
+    socks4.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(1)
 
-# Writing SOCKS5 Proxies
-socks5.write(scrape_socks5.content)
+# Write SOCKS5 proxies to file
+for proxy in socks5_proxies:
+    socks5.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(1)
 
-# Writing All Proxies 
-allp.write(scrape_all.content)
+# Write SOCKS4 proxies to file
+for proxy in all_proxies:
+    allp.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(1)
 
@@ -201,6 +254,7 @@ set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Wrote Proxies!")
 Write.Print("[!] Finished Writing Proxies In Files!\n", Colors.green_to_white, interval=0)
 Write.Print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
 time.sleep(1)
+
 set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Closing Files . . .")
 Write.Print("[?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
 time.sleep(1)
