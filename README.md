@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Bloody Proxy Scraper 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-v2.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-v2.0.1-purple.svg?cacheSeconds=2592000" />
 </p>
 
 > Requests-based Proxy scraper. Scrapes 80+ urls!
