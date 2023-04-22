@@ -9,7 +9,6 @@ import subprocess
 
 from pystyle import Write, Colors, Box, Center, Colorate, Anime, Add
 from colorama import Fore
-from urllib.request import urlopen
 
 skull = """
                       :::!~!!!!!:.
