@@ -26,7 +26,6 @@ def pause():
     os.system('pause >nul')
 
 h_h2 = ["Halal", "Haram"]
-
 now = datetime.datetime.now()   
 
 cls()
@@ -177,34 +176,34 @@ time.sleep(1)
 for proxy in http_proxies:
     http.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
-time.sleep(1)
+time.sleep(0.3)
 
 # Write SOCKS4 proxies to file
 for proxy in socks4_proxies:
     socks4.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
-time.sleep(1)
+time.sleep(0.3)
 
 # Write SOCKS5 proxies to file
 for proxy in socks5_proxies:
     socks5.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
-time.sleep(1)
+time.sleep(0.3)
 
 # Write SOCKS4 proxies to file
 for proxy in all_proxies:
     allp.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
-time.sleep(1)
+time.sleep(0.3)
 
 set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Wrote Proxies!")
 Write.Print("[!] Finished Writing Proxies In Files!\n", Colors.green_to_white, interval=0)
 Write.Print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-time.sleep(1)
+time.sleep(0.5)
 
 set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Closing Files . . .")
 Write.Print("[?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
-time.sleep(1)
+time.sleep(0.5)
 
 # Closing Files
 http.close()
