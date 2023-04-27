@@ -5,13 +5,15 @@ from console.utils import set_title
 from colorama import Fore
 
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-from data.plugins.common import Updater
+from data.plugins.common import MainUpdater, CommonUpdater, SkidUpdater
 from data.plugins.antiskid import urFucked
 from win10toast import ToastNotifier
 toast = ToastNotifier()
 
-# Check for updates
-Updater()
+# Check for updates to main file, and both files in data/plugins
+MainUpdater()
+CommonUpdater()
+SkidUpdater()
 
 # Anti-Skid
 __author__ = 'NoNoobz'
