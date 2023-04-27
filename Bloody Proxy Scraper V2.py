@@ -67,11 +67,12 @@ Write.Print("━━━━━━━━━━━━━━━━━━━━━━�
 set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Scraping Proxies . . .")
 Write.Print("[?] Scraping Proxies . . .\n", Colors.red_to_yellow, interval=0)
 
-# Opening/Adding proxy files
-http = open('proxies-http.txt','wb')
-socks4 = open('proxies-socks4.txt','wb')
-socks5 = open('proxies-socks5.txt','wb')
-allp = open('proxies-all.txt','wb')
+# Opening/Adding proxy 
+# Edit: Proxy files are opened when proxies are being written. You can safely remove the #'s below without errors if you wish.
+# http = open('proxies-http.txt','wb')
+# socks4 = open('proxies-socks4.txt','wb')
+# socks5 = open('proxies-socks5.txt','wb')
+# allp = open('proxies-all.txt','wb')
 # scraped_sites = 0
 
 # Scrape HTTP(s) proxies from their sources 
@@ -174,25 +175,29 @@ time.sleep(1)
 
 # Write HTTP(s) proxies to file
 for proxy in http_proxies:
-    http.write(proxy.encode('utf-8') + b'\n')
+    with open('proxies-http.txt','wb') as http:
+        http.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS4 proxies to file
 for proxy in socks4_proxies:
-    socks4.write(proxy.encode('utf-8') + b'\n')
+    with open('proxies-socks4.txt','wb') as socks4:
+        socks4.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS5 proxies to file
 for proxy in socks5_proxies:
-    socks5.write(proxy.encode('utf-8') + b'\n')
+    with open('proxies-socks5.txt','wb') as socks5:
+        socks5.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS4 proxies to file
 for proxy in all_proxies:
-    allp.write(proxy.encode('utf-8') + b'\n')
+    with open('proxies-all.txt','wb') as allp:
+        allp.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
