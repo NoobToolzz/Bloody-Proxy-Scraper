@@ -174,29 +174,29 @@ time.sleep(1)
 # Writing Proxies In Their Files
 
 # Write HTTP(s) proxies to file
-for proxy in http_proxies:
-    with open('proxies-http.txt','wb') as http:
+with open('proxies-http.txt','wb') as http:
+    for proxy in http_proxies:
         http.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS4 proxies to file
-for proxy in socks4_proxies:
-    with open('proxies-socks4.txt','wb') as socks4:
+with open('proxies-socks4.txt','wb') as socks4:
+    for proxy in socks4_proxies:
         socks4.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS5 proxies to file
-for proxy in socks5_proxies:
-    with open('proxies-socks5.txt','wb') as socks5:
+with open('proxies-socks5.txt','wb') as socks5:
+    for proxy in socks5_proxies:
         socks5.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS4 proxies to file
-for proxy in all_proxies:
-    with open('proxies-all.txt','wb') as allp:
+with open('proxies-all.txt','wb') as allp:
+    for proxy in all_proxies:
         allp.write(proxy.encode('utf-8') + b'\n')
 Write.Print("[?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
