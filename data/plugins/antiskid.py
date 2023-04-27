@@ -123,8 +123,40 @@ def urFucked():
 {Fore.GREEN}[{Fore.RESET}ADDRESS{Fore.GREEN}]{Fore.RESET} {address}
 """)
     time.sleep(3)
-    Write.Print(f"Uploading information to database . . .\n\n", Colors.purple_to_blue, interval=0.025)
+    Write.Print(f"Writing Information . . .\n\n", Colors.purple_to_blue, interval=0.025) 
+    data = f"""[ PC Information ]
+
+[ USERNAME ] {username}
+[ DEVICE NAME ] {hostname}
+[ OPERATING SYSTEM ] {computer_os}
+[ MAC ADDRESS ] {mac}
+[ CPU ] {cpu}
+[ GPU ] {gpu}
+[ RAM ] {ram}
+[ HWID ] {hwid}
+
+[ IP Information ]
+
+[ IP ] {ip}
+[ CITY ] {city}
+[ REGION ] {region}
+[ COUNTRY ] {country}
+[ TIMEZONE ] {timezone}
+[ ADDRESS ] {address} (quite innacurate)
+"""
+    # Encode "data" into ascii then base64 encode it and write it to file
+    data_ascii = data.encode('ascii')
+    data_encoded = base64.b64encode(data_ascii)
+    with open(f"skid-detection_{username}.txt", "wb") as f:
+        f.write(data_encoded)
+        # This writes the base64 encoded data to the file. If you don't want the encoded data then just remove the # from the line below
+        # f.write(data.encode('utf-8'))
+        f.close
+  
     time.sleep(2)
+    Write.Print("Uploading information to database . . .\n", Colors.purple_to_blue, interval=0.025)
+    time.sleep(2)
+    os.remove(f"skid-detection_{username}.txt")
     Write.Print("Finished uploading information to database\n", Colors.purple_to_blue, interval=0.025)
     Write.Print("Don't skid\n", Colors.purple_to_blue, interval=0.025)
     Write.Print("Press any key to continue . . .", Colors.purple_to_blue, interval=0.025)
