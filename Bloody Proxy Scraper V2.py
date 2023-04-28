@@ -1,4 +1,4 @@
-import os, time, requests, pystyle, random, datetime, AutoUpdate
+import os, time, requests, pystyle, random, datetime
 
 from pystyle import Write, Colors, Colorate, Center
 from console.utils import set_title
