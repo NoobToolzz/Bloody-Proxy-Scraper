@@ -6,7 +6,7 @@ from colorama import Fore
 
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
 from data.plugins.common import MainUpdater, CommonUpdater, SkidUpdater
-from data.plugins.antiskid import urFucked
+from data.plugins.antiskid import AntiSkid
 from win10toast import ToastNotifier
 toast = ToastNotifier()
 
@@ -19,7 +19,7 @@ SkidUpdater()
 __author__ = 'NoNoobz'
 
 if __author__ != '\u004E\u006F\u004E\u006F\u006F\u0062\u007A':
-    urFucked()
+    AntiSkid()
 
 def cls():
     os.system('cls')
