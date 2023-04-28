@@ -5,7 +5,7 @@ import AutoUpdate
 def MainUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/Bloody%20Proxy%20Scraper%20V2.py")
-    AutoUpdate.set_current_version("v2.0.5")
+    AutoUpdate.set_current_version("v2.0.6")
 
     if not AutoUpdate.is_up_to_date():
         AutoUpdate.download("Bloody Proxy Scraper V2.py")
@@ -13,7 +13,7 @@ def MainUpdater():
 def CommonUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/data/plugins/common.py")
-    AutoUpdate.set_current_version("v2.0.5")
+    AutoUpdate.set_current_version("v2.0.6")
 
     if not AutoUpdate.is_up_to_date():
         AutoUpdate.download("common.py")
@@ -24,7 +24,7 @@ def CommonUpdater():
 def SkidUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/data/plugins/antiskid.py")
-    AutoUpdate.set_current_version("v2.0.5")
+    AutoUpdate.set_current_version("v2.0.6")
 
     if not AutoUpdate.is_up_to_date():
         AutoUpdate.download("antiskid.py")
