@@ -45,7 +45,7 @@ antiSkid_text = """
 """[1:]
 antiSkid = Add.Add(skull, antiSkid_text, center=True)
 
-def urFucked():
+def AntiSkid():
     os.system('cls' if os.name == 'nt' else 'clear')
     Anime.Fade(Center.YCenter(antiSkid), Colors.purple_to_blue, Colorate.Vertical, interval=0.025, time=2)
     time.sleep(2)
