@@ -1,7 +1,7 @@
 import os
+import time
 import AutoUpdate
 
-import time
 from pystyle import Write, Colors
 
 # Updaters
@@ -43,9 +43,11 @@ def SkidUpdater():
 def VersionFileRemover():
     versionfile = "data/version.txt"
     if os.path.isfile(versionfile):
-        Write.Print("Detected version.txt, deleting (not needed on local pc)", Colors.red_to_yellow, interval=0)
+        Write.Print("Detected version.txt, deleting (not needed on local pc)\n", Colors.red_to_yellow, interval=0)
         time.sleep(1)
         os.remove(versionfile)
-        Write.Print("Deleted version.txt", Colors.green_to_blue, interval=0)
+        Write.Print("Deleted version.txt\n", Colors.green_to_blue, interval=0)
+        time.sleep(1)
+        os.system('cls' if os.name == 'nt' else 'clear')
     else:
         pass
