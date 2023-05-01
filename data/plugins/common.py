@@ -1,5 +1,7 @@
 import os
 import AutoUpdate
+
+import time
 from pystyle import Write, Colors
 
 # Updaters
@@ -36,3 +38,14 @@ def SkidUpdater():
     # directory = os.getcwd()
     os.remove("data/plugins/antiskid.py")
     os.rename("antiskid.py", "data/plugins/antiskid.py")
+
+# Check if version.txt exists because you don't need it, it's needed for updating
+def VersionFileRemover():
+    versionfile = "data/version.txt"
+    if os.path.isfile(versionfile):
+        Write.Print("Detected version.txt, deleting (not needed on local pc)", Colors.red_to_yellow, interval=0)
+        time.sleep(1)
+        os.remove(versionfile)
+        Write.Print("Deleted version.txt", Colors.green_to_blue, interval=0)
+    else:
+        pass
