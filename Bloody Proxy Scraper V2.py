@@ -5,7 +5,7 @@ from console.utils import set_title
 from colorama import Fore
 
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-from data.plugins.common import MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover
+from data.plugins.common import cls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover
 from data.plugins.antiskid import AntiSkid
 from win10toast import ToastNotifier
 toast = ToastNotifier()
@@ -26,12 +26,6 @@ __author__ = 'NoNoobz'
 
 if __author__ != '\u004E\u006F\u004E\u006F\u006F\u0062\u007A':
     AntiSkid()
-
-def cls():
-    os.system('cls')
-
-def pause():
-    os.system('pause >nul')
 
 h_h2 = ["Halal", "Haram"]
 now = datetime.datetime.now()   
