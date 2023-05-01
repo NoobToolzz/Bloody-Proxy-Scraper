@@ -11,6 +11,7 @@ from win10toast import ToastNotifier
 toast = ToastNotifier()
 
 # Check for updates to main file, and both files in data/plugins
+print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Checking for updates . . .")
 MainUpdater()
 CommonUpdater()
 SkidUpdater()
