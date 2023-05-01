@@ -1,5 +1,6 @@
 import os
 import AutoUpdate
+from pystyle import Write, Colors
 
 # Updaters
 def MainUpdater():
@@ -8,6 +9,7 @@ def MainUpdater():
     AutoUpdate.set_current_version("v2.0.6")
 
     if not AutoUpdate.is_up_to_date():
+        Write.Print("Update found! Updating . . .", Colors.cyan_to_blue, interval=0)
         AutoUpdate.download("Bloody Proxy Scraper V2.py")
 
 def CommonUpdater():
@@ -16,6 +18,7 @@ def CommonUpdater():
     AutoUpdate.set_current_version("v2.0.6")
 
     if not AutoUpdate.is_up_to_date():
+        Write.Print("Update found for common.py! Updating . . .", Colors.cyan_to_blue, interval=0)
         AutoUpdate.download("common.py")
 
     os.remove("data/plugins/common.py")
@@ -27,6 +30,7 @@ def SkidUpdater():
     AutoUpdate.set_current_version("v2.0.6")
 
     if not AutoUpdate.is_up_to_date():
+        Write.Print("Update found for antiskid.py! Updating . . .", Colors.cyan_to_blue, interval=0)
         AutoUpdate.download("antiskid.py")
 
     # directory = os.getcwd()
