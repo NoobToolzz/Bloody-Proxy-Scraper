@@ -6,7 +6,7 @@ from pystyle import Write, Colors
 def MainUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/Bloody%20Proxy%20Scraper%20V2.py")
-    AutoUpdate.set_current_version("v2.0.6")
+    AutoUpdate.set_current_version("v2.0.7")
 
     if not AutoUpdate.is_up_to_date():
         Write.Print("Update found! Updating . . .", Colors.cyan_to_blue, interval=0)
@@ -15,7 +15,7 @@ def MainUpdater():
 def CommonUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/data/plugins/common.py")
-    AutoUpdate.set_current_version("v2.0.6")
+    AutoUpdate.set_current_version("v2.0.7")
 
     if not AutoUpdate.is_up_to_date():
         Write.Print("Update found for common.py! Updating . . .", Colors.cyan_to_blue, interval=0)
@@ -27,7 +27,7 @@ def CommonUpdater():
 def SkidUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/data/plugins/antiskid.py")
-    AutoUpdate.set_current_version("v2.0.6")
+    AutoUpdate.set_current_version("v2.0.7")
 
     if not AutoUpdate.is_up_to_date():
         Write.Print("Update found for antiskid.py! Updating . . .", Colors.cyan_to_blue, interval=0)
