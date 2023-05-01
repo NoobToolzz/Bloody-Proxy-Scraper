@@ -5,10 +5,13 @@ from console.utils import set_title
 from colorama import Fore
 
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-from data.plugins.common import MainUpdater, CommonUpdater, SkidUpdater
+from data.plugins.common import MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover
 from data.plugins.antiskid import AntiSkid
 from win10toast import ToastNotifier
 toast = ToastNotifier()
+
+# Check if version.txt exists. If it does, delete it.
+VersionFileRemover()
 
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Checking for updates . . .")
