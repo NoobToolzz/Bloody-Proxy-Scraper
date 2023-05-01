@@ -6,6 +6,13 @@ from pystyle import Write, Colors
 
 CurrentVersion = "2.0.7"
 
+# Clean and Pause variables
+def cls():
+    os.system('cls')
+
+def pause():
+    os.system('pause >nul')
+
 # Updaters
 def MainUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
