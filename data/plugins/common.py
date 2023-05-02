@@ -70,11 +70,6 @@ Additions:
 Deletions:
 - Removed "update found" from common.py because it says update found all the time
 """
-    # Don't ask me why I encoded it.
-    changelogs_encode = base64.b64encode(changelogs)
-    changelogs_encoded = base64.b64encode(changelogs_encode)
-    changelogs_encoded_part = f"Base64 Encoded Data (idk whyyyy)\n\n{changelogs_encoded}"
     with open('data/changelogs.txt', 'wb') as f:
-        f.write(changelogs.encode('utf-8') + "\n")
-        f.write(changelogs_encoded_part)
+        f.write(changelogs.encode('utf-8'))
         f.close
