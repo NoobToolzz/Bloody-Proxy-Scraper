@@ -1,4 +1,4 @@
-import os
+ import os
 import time
 import base64
 import AutoUpdate
@@ -74,6 +74,6 @@ Deletions:
     changelogs_encoded = base64.b64encode(changelogs.encode('ascii'))
     changelogs_encoded_part = f"Base64 Encoded Data (idk whyyyy)\n\n{changelogs_encoded}"
     with open('data/changelogs.txt', 'wb') as f:
-        f.write(changelogs + "\n")
-        f.write(changelogs_encoded_part)
+        f.write(changelogs.encode('utf-8') + "\n")
+        f.write(changelogs_encoded_part.encode('utf-8'))
         f.close
