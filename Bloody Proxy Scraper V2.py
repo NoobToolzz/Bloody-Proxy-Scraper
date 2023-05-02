@@ -5,7 +5,7 @@ from console.utils import set_title
 from colorama import Fore
 
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-from data.plugins.common import cls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover
+from data.plugins.common import cls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, Changelogs
 from data.plugins.antiskid import AntiSkid
 from win10toast import ToastNotifier
 toast = ToastNotifier()
@@ -24,6 +24,11 @@ print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/p
 time.sleep(0.5)
 SkidUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
+
+# Writes changelogs to changelogs.txt in data folder
+Changelogs()
+print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Written changelogs to data/changelogs.txt")
+time.sleep(2)
 
 # Anti-Skid
 __author__ = 'NoNoobz'
