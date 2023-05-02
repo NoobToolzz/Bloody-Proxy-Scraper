@@ -1,10 +1,11 @@
 import os
 import time
+import base64
 import AutoUpdate
 
 from pystyle import Write, Colors
 
-CurrentVersion = "2.0.7"
+CurrentVersion = "2.0.8"
 
 # Clean and Pause variables
 def cls():
@@ -57,3 +58,22 @@ def VersionFileRemover():
         os.system('cls' if os.name == 'nt' else 'clear')
     else:
         pass
+
+def Changelogs():
+    changelogs = f"""Bloody Proxy Scraper v{CurrentVersion} Changelogs
+
+Additions:
+- Added deleted files remover
+- Added changelogs file
+- Added a "updated <file>" on launch when checking for updates
+
+Deletions:
+- Removed "update found" from common.py because it says update found all the time
+"""
+    # Don't ask me why I encoded it.
+    changelogs_encoded = base64.b64encode(changelogs.encode('ascii'))
+    changelogs_encoded_part = f"Base64 Encoded Data (idk whyyyy)\n\n{changelogs_encoded}"
+    with open('data/changelogs.txt', 'wb') as f:
+        f.write(changelogs + "\n")
+        f.write(changelogs_encoded_part)
+        f.close
