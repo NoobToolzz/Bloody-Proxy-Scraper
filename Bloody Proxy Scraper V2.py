@@ -9,17 +9,21 @@ from data.plugins.common import cls, pause, MainUpdater, CommonUpdater, SkidUpda
 from data.plugins.antiskid import AntiSkid
 from win10toast import ToastNotifier
 toast = ToastNotifier()
+cls()
 
 # Check if version.txt exists. If it does, delete it.
 VersionFileRemover()
 
 # Check for updates to main file, and both files in data/plugins
-print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Checking for updates . . .")
+print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
 MainUpdater()
+print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
 CommonUpdater()
+print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/common.py")
 time.sleep(0.5)
 SkidUpdater()
+print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
 
 # Anti-Skid
 __author__ = 'NoNoobz'
