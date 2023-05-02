@@ -2,7 +2,6 @@ import os
 import time
 import AutoUpdate
 
-from antiskid import AntiSkid
 from pystyle import Write, Colors
 
 CurrentVersion = "2.0.7"
