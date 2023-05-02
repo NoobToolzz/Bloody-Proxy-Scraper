@@ -2,6 +2,7 @@ import os
 import time
 import AutoUpdate
 
+from antiskid import AntiSkid
 from pystyle import Write, Colors
 
 CurrentVersion = "2.0.7"
@@ -20,7 +21,6 @@ def MainUpdater():
     AutoUpdate.set_current_version(CurrentVersion)
 
     if not AutoUpdate.is_up_to_date():
-        Write.Print("Update found! Updating . . .\n", Colors.cyan_to_blue, interval=0)
         AutoUpdate.download("Bloody Proxy Scraper V2.py")
 
 def CommonUpdater():
@@ -29,7 +29,6 @@ def CommonUpdater():
     AutoUpdate.set_current_version(CurrentVersion)
 
     if not AutoUpdate.is_up_to_date():
-        Write.Print("Update found for common.py! Updating . . .\n", Colors.cyan_to_blue, interval=0)
         AutoUpdate.download("common.py")
 
     os.remove("data/plugins/common.py")
@@ -41,7 +40,6 @@ def SkidUpdater():
     AutoUpdate.set_current_version(CurrentVersion)
 
     if not AutoUpdate.is_up_to_date():
-        Write.Print("Update found for antiskid.py! Updating . . .\n", Colors.cyan_to_blue, interval=0)
         AutoUpdate.download("antiskid.py")
 
     # directory = os.getcwd()
@@ -53,7 +51,7 @@ def VersionFileRemover():
     versionfile = "data/version.txt"
     if os.path.isfile(versionfile):
         Write.Print("Detected version.txt, deleting (not needed on local pc)\n", Colors.red_to_yellow, interval=0)
-        time.sleep(1)
+        time.sleep(2)
         os.remove(versionfile)
         Write.Print("Deleted version.txt\n", Colors.green_to_blue, interval=0)
         time.sleep(1)
