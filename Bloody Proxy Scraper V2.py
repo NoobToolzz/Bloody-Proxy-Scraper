@@ -68,7 +68,7 @@ Made by: {__author__}
 
 GitHub: github/NoobToolzz
 """
-toast.show_toast("Bloody Proxy Scraper V2",
+toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Started to scrape proxies.",
                      icon_path="data\icons\logo.ico",
                      duration=2)
@@ -78,7 +78,7 @@ Write.Print(f"{random.choice(h_h2)}\n", Colors.green_to_white, interval=0)
 Write.Print("Started at: " + now.strftime("%Y/%m/%d %H:%M:%S\n"), Colors.purple_to_blue , interval=0)
 time.sleep(1)
 Write.Print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Scraping Proxies . . .")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraping Proxies . . .")
 Write.Print("[?] Scraping Proxies . . .\n", Colors.red_to_yellow, interval=0)
 
 # Opening/Adding proxy 
@@ -95,16 +95,16 @@ for url in http_urls:
     try:
         scrape_http = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped HTTP Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped HTTP Proxies from {url}!")
         Write.Print(f"\n[?] Scraped HTTP Proxies from {url}\n", Colors.green_to_blue, interval=0)
         http_proxies.extend(scrape_http.text.strip().split('\n'))
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped HTTP Proxies!")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped HTTP Proxies!")
 Write.Print("[?] Scraped HTTP(S) Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-toast.show_toast("Bloody Proxy Scraper V2",
+toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped HTTP(S) Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -116,16 +116,16 @@ for url in socks4_urls:
     try:
         scrape_socks4 = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS4 Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS4 Proxies from {url}!")
         Write.Print(f"\n[?] Scraped SOCKS4 Proxies from {url}\n", Colors.green_to_blue, interval=0)
         socks4_proxies.extend(scrape_socks4.text.strip().split('\n'))
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS4 Proxies!")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS4 Proxies!")
 Write.Print("[?] Scraped SOCKS4 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-toast.show_toast("Bloody Proxy Scraper V2",
+toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped SOCKS4 Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -137,16 +137,16 @@ for url in socks5_urls:
     try:
         scrape_socks5 = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS5 Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS5 Proxies from {url}!")
         Write.Print(f"\n[?] Scraped SOCKS5 Proxies from {url}\n", Colors.green_to_blue, interval=0)
         socks5_proxies.extend(scrape_socks5.text.strip().split('\n'))
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS5 Proxies!")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS5 Proxies!")
 Write.Print("[?] Scraped SOCKS5 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-toast.show_toast("Bloody Proxy Scraper V2",
+toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped SOCKS5 Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -158,28 +158,28 @@ for url in all_urls:
     try:
         scrape_all = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped ALL Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped ALL Proxies from {url}!")
         Write.Print(f"\n[?] Scraped ALL Proxies from {url}\n", Colors.green_to_blue, interval=0)
         all_proxies.extend(scrape_all.text.strip().split('\n'))
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped ALL Proxies!")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped ALL Proxies!")
 Write.Print("[?] Scraped ALL Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-toast.show_toast("Bloody Proxy Scraper V2",
+toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped ALL Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
 time.sleep(1)
 
-set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Finished Scraping Proxies!")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Finished Scraping Proxies!")
 Write.Print(f"[!] Finished Scraping Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
 time.sleep(1)
-set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Writing Proxies . . .")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Writing Proxies . . .")
 Write.Print("[?] Writing Proxies In Files . . .\n\n", Colors.red_to_yellow, interval=0)
-toast.show_toast("Bloody Proxy Scraper V2",
+toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Writing Proxies...",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -215,12 +215,12 @@ with open('proxies-all.txt','wb') as allp:
 Write.Print("[?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
-set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Wrote Proxies!")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Wrote Proxies!")
 Write.Print("[!] Finished Writing Proxies In Files!\n", Colors.green_to_white, interval=0)
 Write.Print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
 time.sleep(0.5)
 
-set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Closing Files . . .")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Closing Files . . .")
 Write.Print("[?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.5)
 
@@ -231,9 +231,9 @@ socks5.close()
 allp.close()
 
 # Done!
-set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Finished!")
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Finished!")
 Write.Print("[!] Successfully Scraped And Saved Proxies!\n\n", Colors.green_to_white, interval=0)
-toast.show_toast("Bloody Proxy Scraper V2",
+toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Finished!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
