@@ -5,7 +5,7 @@ from console.utils import set_title
 from colorama import Fore
 
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-from data.plugins.common import cls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, Changelogs
+from data.plugins.common import cls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, Changelogs, CurrentVersion
 from data.plugins.antiskid import AntiSkid
 from win10toast import ToastNotifier
 toast = ToastNotifier()
@@ -41,7 +41,7 @@ now = datetime.datetime.now()
 
 cls()
 # os.system('mode 85, 25')
-banner = '''
+banner = f"""
 ██████╗ ██╗      ██████╗  ██████╗ ██████╗ ██╗   ██╗     
 ██╔══██╗██║     ██╔═══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝     
 ██████╔╝██║     ██║   ██║██║   ██║██║  ██║ ╚████╔╝      
@@ -62,9 +62,12 @@ banner = '''
 ╚════██║██║     ██╔══██╗██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
 ███████║╚██████╗██║  ██║██║  ██║██║     ███████╗██║  ██║
 ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝
-A simple proxy scraper made by Bloody.
-github/BloodyToolzz
-'''
+-----------------------------------------------------------
+Bloody Proxy Scraper v{CurrentVersion}
+Made by: {__author__}
+
+GitHub: github/NoobToolzz
+"""
 toast.show_toast("Bloody Proxy Scraper V2",
                      "Started to scrape proxies.",
                      icon_path="data\icons\logo.ico",
