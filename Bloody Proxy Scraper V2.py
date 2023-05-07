@@ -1,6 +1,6 @@
 import os, time, requests, pystyle, random, datetime, json
 
-from pystyle import Write, Colors, Colorate, Center
+from pystyle import Write, Colors, Colorate, Center, Add
 from console.utils import set_title
 from colorama import Fore
 
@@ -11,12 +11,43 @@ from win10toast import ToastNotifier
 toast = ToastNotifier()
 cls()
 
+# Anti-Skid
+__author__ = 'NoNoobz'
+
+if __author__ != '\u004E\u006F\u004E\u006F\u006F\u0062\u007A':
+    AntiSkid()
+
+# Banner Stuff
+h_h2 = ["Halal", "Haram"]
+now = datetime.datetime.now()
+timenow = now.strftime("%H:%M:%S")
+
+banner_ascii = f"""
+██████╗ ██████╗ ███████╗
+██╔══██╗██╔══██╗██╔════╝
+██████╔╝██████╔╝███████╗
+██╔══██╗██╔═══╝ ╚════██║
+██████╔╝██║     ███████║
+╚═════╝ ╚═╝     ╚══════╝ v{CurrentVersion}        
+
+"""
+
+text = f"""
+Made by {__author__}
+This program is {random.choice(h_h2)}
+Started at: {timenow}
+"""
+banner = Add.Add(banner_ascii, text, center=True)
+
 # Load Configuration
 config = json.load(open('config.json', 'r', encoding='utf-8'))
 
 # Check if version.txt exists. If it does, delete it.
 VersionFileRemover()
 
+Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.purple_to_blue, interval=0)
+print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
+Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.rainbow, interval=0)
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
 MainUpdater()
@@ -33,29 +64,8 @@ ChangelogsUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Written changelogs to data/changelogs.txt")
 time.sleep(2)
 
-# Anti-Skid
-__author__ = 'NoNoobz'
-
-if __author__ != '\u004E\u006F\u004E\u006F\u006F\u0062\u007A':
-    AntiSkid()
-
-h_h2 = ["Halal", "Haram"]
-now = datetime.datetime.now()
-timenow = now.strftime("%H:%M:%S")
-
 cls()
 # os.system('mode 85, 25')
-banner = f"""
-██████╗ ██████╗ ███████╗
-██╔══██╗██╔══██╗██╔════╝
-██████╔╝██████╔╝███████╗
-██╔══██╗██╔═══╝ ╚════██║
-██████╔╝██║     ███████║
-╚═════╝ ╚═╝     ╚══════╝ v{CurrentVersion}                        
-Made by {__author__}
-This program is {random.choice(h_h2)}
-Started at: {timenow}
-"""
 if config["notifications"] == "true" or config["notifications"] == "True":
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Started to scrape proxies.",
