@@ -19,7 +19,7 @@ VersionFileRemover()
 
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-MainUpdater()
+# MainUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
 CommonUpdater()
@@ -226,31 +226,27 @@ time.sleep(1)
 with open('proxies-http.txt','wb') as http:
     for proxy in http_proxies:
         http.write(proxy.encode('utf-8') + b'\n')
-        http.close()
-Write.Print("[?] Wrote HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print(f"[{timenow}] | [?] Wrote HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS4 proxies to file
 with open('proxies-socks4.txt','wb') as socks4:
     for proxy in socks4_proxies:
         socks4.write(proxy.encode('utf-8') + b'\n')
-        socks4.close()
-Write.Print("[?] Wrote SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print(f"[{timenow}] | [?] Wrote SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 # Write SOCKS5 proxies to file
 with open('proxies-socks5.txt','wb') as socks5:
     for proxy in socks5_proxies:
         socks5.write(proxy.encode('utf-8') + b'\n')
-        socks5.close()
-Write.Print("[?] Wrote SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print(f"[{timenow}] | [?] Wrote SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 with open('proxies-all.txt','wb') as allp:
     for proxy in all_proxies:
         allp.write(proxy.encode('utf-8') + b'\n')
-        allp.close()
-Write.Print("[?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
+Write.Print(f"[{timenow}] | [?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Wrote Proxies!")
@@ -258,10 +254,15 @@ Write.Print(f"[{timenow}] | [!] Finished Writing Proxies In Files!\n", Colors.gr
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
 time.sleep(0.5)
 
-# You can have this if you want, just the files get closed after proxies are written now
-# set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Closing Files . . .")
-# Write.Print("[?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
-# time.sleep(0.5)
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Closing Files . . .")
+Write.Print(f"[{timenow}] | [?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
+time.sleep(0.5)
+
+# Closing Files
+http.close()
+socks4.close()
+socks5.close()
+allp.close()
 
 # Done!
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Finished!")
