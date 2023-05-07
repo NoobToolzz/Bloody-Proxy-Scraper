@@ -19,7 +19,7 @@ VersionFileRemover()
 
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-MainUpdater()
+# MainUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
 CommonUpdater()
@@ -68,7 +68,7 @@ banner = '''
 A simple proxy scraper made by Bloody.
 github/BloodyToolzz
 '''
-if config["notifications"] == "true" or "True":
+if config["notifications"] == "true":
     toast.show_toast("Bloody Proxy Scraper V2",
                      "Started to scrape proxies.",
                      icon_path="data\icons\logo.ico",
@@ -107,7 +107,7 @@ for url in http_urls:
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped HTTP Proxies!")
 Write.Print("[?] Scraped HTTP(S) Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or "True":
+if config["notifications"] == "true":
     toast.show_toast("Bloody Proxy Scraper V2",
                      "Scraped HTTP(S) Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -131,7 +131,7 @@ for url in socks4_urls:
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS4 Proxies!")
 Write.Print("[?] Scraped SOCKS4 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or "True":
+if config["notifications"] == "true":
     toast.show_toast("Bloody Proxy Scraper V2",
                      "Scraped SOCKS4 Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -155,7 +155,7 @@ for url in socks5_urls:
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped SOCKS5 Proxies!")
 Write.Print("[?] Scraped SOCKS5 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or "True":
+if config["notifications"] == "true":
     toast.show_toast("Bloody Proxy Scraper V2",
                      "Scraped SOCKS5 Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -179,7 +179,7 @@ for url in all_urls:
 set_title(f"Bloody Proxy Scraper V2 | Made By: Bloody | Scraped ALL Proxies!")
 Write.Print("[?] Scraped ALL Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or "True":
+if config["notifications"] == "true":
     toast.show_toast("Bloody Proxy Scraper V2",
                      "Scraped ALL Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -194,7 +194,7 @@ Write.Print("━━━━━━━━━━━━━━━━━━━━━━�
 time.sleep(1)
 set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Writing Proxies . . .")
 Write.Print("[?] Writing Proxies In Files . . .\n\n", Colors.red_to_yellow, interval=0)
-if config["notifications"] == "true" or "True":
+if config["notifications"] == "true":
     toast.show_toast("Bloody Proxy Scraper V2",
                      "Writing Proxies...",
                      icon_path="data\icons\logo.ico",
@@ -209,6 +209,7 @@ time.sleep(1)
 with open('proxies-http.txt','wb') as http:
     for proxy in http_proxies:
         http.write(proxy.encode('utf-8') + b'\n')
+        http.close()
 Write.Print("[?] Wrote HTTP Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
@@ -216,6 +217,7 @@ time.sleep(0.3)
 with open('proxies-socks4.txt','wb') as socks4:
     for proxy in socks4_proxies:
         socks4.write(proxy.encode('utf-8') + b'\n')
+        socks4.close()
 Write.Print("[?] Wrote SOCKS4 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
@@ -223,6 +225,7 @@ time.sleep(0.3)
 with open('proxies-socks5.txt','wb') as socks5:
     for proxy in socks5_proxies:
         socks5.write(proxy.encode('utf-8') + b'\n')
+        socks5.close()
 Write.Print("[?] Wrote SOCKS5 Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
@@ -230,6 +233,7 @@ time.sleep(0.3)
 with open('proxies-all.txt','wb') as allp:
     for proxy in all_proxies:
         allp.write(proxy.encode('utf-8') + b'\n')
+        allp.close()
 Write.Print("[?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
@@ -242,16 +246,10 @@ set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Closing Files . . .")
 Write.Print("[?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.5)
 
-# Closing Files
-http.close()
-socks4.close()
-socks5.close()
-allp.close()
-
 # Done!
 set_title("Bloody Proxy Scraper V2 | Made By: Bloody | Finished!")
 Write.Print("[!] Successfully Scraped And Saved Proxies!\n\n", Colors.green_to_white, interval=0)
-if config["notifications"] == "true" or "True":
+if config["notifications"] == "true":
     toast.show_toast("Bloody Proxy Scraper V2",
                      "Finished!",
                      icon_path="data\icons\logo.ico",
