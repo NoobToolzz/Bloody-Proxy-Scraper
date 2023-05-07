@@ -5,7 +5,7 @@ import AutoUpdate
 
 from pystyle import Write, Colors
 
-CurrentVersion = "2.0.8"
+CurrentVersion = "2.0.9"
 
 # Clean and Pause variables
 def cls():
@@ -59,16 +59,18 @@ def VersionFileRemover():
     else:
         pass
 
-def Changelogs():
+def ChangelogsUpdater():
     changelogs = f"""Bloody Proxy Scraper v{CurrentVersion} Changelogs
 
-Additions:
-- Added deleted files remover
-- Added changelogs file
-- Added a "updated <file>" on launch when checking for updates
+Additions / Changes:
+- Banner ASCII update
+- Config update - Takes "true" and "True"
+- Scrape cooldown (optional) - No decimals
+- Most prints show time - Format H:M:S
+- Shows current version instead of "V2"
 
 Deletions:
-- Removed "update found" from common.py because it says update found all the time
+- No deletions this update.
 """
     with open('data/changelogs.txt', 'wb') as f:
         f.write(changelogs.encode('utf-8'))
