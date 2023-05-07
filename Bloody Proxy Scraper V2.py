@@ -19,7 +19,7 @@ VersionFileRemover()
 
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-# MainUpdater()
+MainUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
 CommonUpdater()
