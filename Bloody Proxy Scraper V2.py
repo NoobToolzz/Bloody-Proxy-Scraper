@@ -5,7 +5,7 @@ from console.utils import set_title
 from colorama import Fore
 
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-from data.plugins.common import cls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, ChangelogsUpdater, CurrentVersion
+from data.plugins.common import cls, qotls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, ChangelogsUpdater, CurrentVersion
 from data.plugins.antiskid import AntiSkid
 from win10toast import ToastNotifier
 toast = ToastNotifier()
@@ -18,7 +18,7 @@ if __author__ != '\u004E\u006F\u004E\u006F\u006F\u0062\u007A':
     AntiSkid()
 
 # Banner Stuff
-h_h2 = ["Halal", "Haram"]
+# h_h2 = ["Halal", "Haram"]
 now = datetime.datetime.now()
 timenow = now.strftime("%H:%M:%S")
 
@@ -34,8 +34,8 @@ banner_ascii = f"""
 
 text = f"""
 Made by {__author__}
-This program is {random.choice(h_h2)}
 Started at: {timenow}
+Quote of the launch: {random.choice(qotls)}
 """
 banner = Add.Add(banner_ascii, text, center=True)
 
@@ -50,13 +50,13 @@ print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.rainbow, interval=0)
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-MainUpdater()
+#MainUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
-CommonUpdater()
+#CommonUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/common.py")
 time.sleep(0.5)
-SkidUpdater()
+#SkidUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
 
 # Writes changelogs to changelogs.txt in data folder
