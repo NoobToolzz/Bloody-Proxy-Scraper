@@ -261,22 +261,19 @@ time.sleep(0.3)
 
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Wrote Proxies!")
 Write.Print(f"[{timenow}] | [!] Finished Writing Proxies In Files!\n", Colors.green_to_white, interval=0)
-Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
 time.sleep(0.5)
-
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Closing Files . . .")
 Write.Print(f"[{timenow}] | [?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
-time.sleep(0.5)
-
 # Closing Files
 http.close()
 socks4.close()
 socks5.close()
 allp.close()
+time.sleep(0.5)
 
 # Done!
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Finished!")
-Write.Print(f"[{timenow}] | [!] Successfully Scraped And Saved Proxies!\n\n", Colors.green_to_white, interval=0)
+cls()
+time.sleep(0.3)
 if config["notifications"] == "true" or config["notifications"] == "True":
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Finished!",
@@ -284,7 +281,9 @@ if config["notifications"] == "true" or config["notifications"] == "True":
                      duration=1)
 else:
     pass
-time.sleep(1)
+Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.purple_to_blue, interval=0)
+print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
+Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.purple_to_blue, interval=0)
+Write.Print(f"[{timenow}] | [!] Successfully Scraped And Saved Proxies!\n\n", Colors.green_to_white, interval=0)
 Write.Print("Thanks for using my tools <3\n", Colors.red_to_yellow, interval=0.1)
-Write.Print("Press any key to continue . . .", Colors.green_to_white, interval=0)
 pause()
