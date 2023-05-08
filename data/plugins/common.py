@@ -10,7 +10,7 @@ CurrentVersion = "2.0.9"
 qotls = ["When the joke is a true fact/statement.", 
          "In the middle of every difficulty, lies opportunity.", 
          "If I'm the wire, can you be my socket <3", 
-         "Dating 2 short girls isn't cheating, because half + half = 1 :O", 
+         "Dating 2 short girls isn't cheating, because half + half = 1", 
          "One does what he is told, never told what he does.",
 ]
 
