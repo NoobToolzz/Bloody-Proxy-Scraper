@@ -41,6 +41,7 @@ banner = Add.Add(banner_ascii, text, center=True)
 
 # Load Configuration
 config = json.load(open('config.json', 'r', encoding='utf-8'))
+notifications = config["notifications"]
 
 # Check if version.txt exists. If it does, delete it.
 VersionFileRemover()
@@ -66,13 +67,6 @@ time.sleep(2)
 
 cls()
 # os.system('mode 85, 25')
-if config["notifications"] == "true" or config["notifications"] == "True":
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
-                     "Started to scrape proxies.",
-                     icon_path="data\icons\logo.ico",
-                     duration=2)
-else:
-    pass
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.purple_to_blue, interval=0)
 print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.rainbow, interval=0)
@@ -89,6 +83,13 @@ if optional_cooldown == "y" or optional_cooldown == "Y" or optional_cooldown == 
         Write.Print("\nDetected a decimal in the cooldown, removing\n", Colors.red_to_yellow, interval=0)
         cooldown = cooldown_input.replace("0.", "")
         Write.Print(f"New cooldown: {cooldown}\n", Colors.green_to_white, interval=0)
+else:
+    pass
+if notifications:
+    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+                     "Started to scrape proxies.",
+                     icon_path="data\icons\logo.ico",
+                     duration=2)
 else:
     pass
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
@@ -122,7 +123,7 @@ for url in http_urls:
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped HTTP Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped HTTP(S) Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or config["notifications"] == "True":
+if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped HTTP(S) Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -150,7 +151,7 @@ for url in socks4_urls:
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS4 Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped SOCKS4 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or config["notifications"] == "True":
+if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped SOCKS4 Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -178,7 +179,7 @@ for url in socks5_urls:
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS5 Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped SOCKS5 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or config["notifications"] == "True":
+if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped SOCKS5 Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -206,7 +207,7 @@ for url in all_urls:
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped ALL Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped ALL Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
-if config["notifications"] == "true" or config["notifications"] == "True":
+if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Scraped ALL Proxies!",
                      icon_path="data\icons\logo.ico",
@@ -221,7 +222,7 @@ Write.Print("-------------------------------------------------------------------
 time.sleep(1)
 set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Writing Proxies . . .")
 Write.Print(f"[{timenow}] | [?] Writing Proxies In Files . . .\n\n", Colors.red_to_yellow, interval=0)
-if config["notifications"] == "true" or config["notifications"] == "True":
+if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Writing Proxies...",
                      icon_path="data\icons\logo.ico",
@@ -274,7 +275,7 @@ time.sleep(0.5)
 # Done!
 cls()
 time.sleep(0.3)
-if config["notifications"] == "true" or config["notifications"] == "True":
+if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Finished!",
                      icon_path="data\icons\logo.ico",
