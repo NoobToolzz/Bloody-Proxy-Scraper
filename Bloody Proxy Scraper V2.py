@@ -289,6 +289,7 @@ time.sleep(0.5)
 # Done!
 cls()
 time.sleep(0.3)
+set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Finished!")
 if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Finished!",
