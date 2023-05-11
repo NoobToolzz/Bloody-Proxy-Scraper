@@ -1,14 +1,32 @@
-import os, time, requests, pystyle, random, datetime, json
+try:
+    import os, time, requests, pystyle, random, datetime, json, webbrowser
 
-from pystyle import Write, Colors, Colorate, Center, Add
-from console.utils import set_title
-from colorama import Fore
+    from pystyle import Write, Colors, Colorate, Center, Add
+    from console.utils import set_title
+    from colorama import Fore
+    from win10toast import ToastNotifier
+    
+    from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
+    from data.plugins.common import cls, qotls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, ChangelogsUpdater, CurrentVersion
+    from data.plugins.antiskid import AntiSkid
 
-from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-from data.plugins.common import cls, qotls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, ChangelogsUpdater, CurrentVersion
-from data.plugins.antiskid import AntiSkid
-from win10toast import ToastNotifier
-toast = ToastNotifier()
+    toast = ToastNotifier()
+except:
+    print("Error: An import was not found. Run setup.bat and try again.")
+    os.system("pause >nul")
+    exit(1)
+
+# Load Configuration
+config = json.load(open('config.json', 'r', encoding='utf-8'))
+try:
+    notifications = config["notifications"]
+except:
+    print("settings.json is not up to date. Please copy paste the new json to your current.")
+    print("Press any key to open settings.json in browser")
+    os.system("pause >nul")
+    webbrowser.open("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/config.json")
+    exit(1)
+
 cls()
 
 # Anti-Skid
@@ -39,10 +57,6 @@ Quote of the launch: {random.choice(qotls)}
 """
 banner = Add.Add(banner_ascii, text, center=True)
 
-# Load Configuration
-config = json.load(open('config.json', 'r', encoding='utf-8'))
-notifications = config["notifications"]
-
 # Check if version.txt exists. If it does, delete it.
 VersionFileRemover()
 
@@ -51,7 +65,7 @@ print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.rainbow, interval=0)
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-MainUpdater()
+#MainUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
 CommonUpdater()
