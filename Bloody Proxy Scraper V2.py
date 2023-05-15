@@ -1,38 +1,20 @@
-try:
-    import os, time, requests, pystyle, random, datetime, json, webbrowser
+import os, time, requests, pystyle, random, datetime, json
 
-    from pystyle import Write, Colors, Colorate, Center, Add
-    from console.utils import set_title
-    from colorama import Fore
-    from win10toast import ToastNotifier
-    
-    from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-    from data.plugins.common import cls, qotls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, ChangelogsUpdater, CurrentVersion
-    from data.plugins.antiskid import AntiSkid
+from pystyle import Write, Colors, Colorate, Center, Add
+from console.utils import set_title
+from colorama import Fore
 
-    toast = ToastNotifier()
-except:
-    print("Error: An import was not found. Run setup.bat and try again.")
-    os.system("pause >nul")
-    exit(1)
-
-# Load Configuration
-config = json.load(open('config.json', 'r', encoding='utf-8'))
-try:
-    notifications = config["notifications"]
-except:
-    print("settings.json is not up to date. Please copy paste the new json to your current.")
-    print("Press any key to open settings.json in browser")
-    os.system("pause >nul")
-    webbrowser.open("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/config.json")
-    exit(1)
-
+from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
+from data.plugins.common import cls, qotls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, ChangelogsUpdater, PythonInstallerDeleter, CurrentVersion
+from data.plugins.antiskid import AntiSkid
+from win10toast import ToastNotifier
+toast = ToastNotifier()
 cls()
 
 # Anti-Skid
 __author__ = 'NoNoobz'
 
-if __author__ != '\u004E\u006F\u004E\u006F\u006F\u0062\u007A':
+if __author__ != '\x4e\x6f\x4e\x6f\x6f\x62\x7a' or __author__ != '\u004E\u006F\u004E\u006F\u006F\u0062\u007A':
     AntiSkid()
 
 # Banner Stuff
@@ -57,21 +39,26 @@ Quote of the launch: {random.choice(qotls)}
 """
 banner = Add.Add(banner_ascii, text, center=True)
 
-# Check if version.txt exists. If it does, delete it.
+# Load Configuration
+config = json.load(open('config.json', 'r', encoding='utf-8'))
+notifications = config["notifications"]
+
+# Check if version.txt and Python installer exists. If it does, delete it.
 VersionFileRemover()
+PythonInstallerDeleter()
 
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.purple_to_blue, interval=0)
 print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.rainbow, interval=0)
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-MainUpdater()
+#MainUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
-CommonUpdater()
+#CommonUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/common.py")
 time.sleep(0.5)
-SkidUpdater()
+#SkidUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
 
 # Writes changelogs to changelogs.txt in data folder
@@ -90,7 +77,7 @@ if optional_cooldown == "y" or optional_cooldown == "Y" or optional_cooldown == 
     Write.Print("\n[WARNING] Do not put any decimals in the cooldown\n", Colors.red_to_yellow, interval=0)
     cooldown_input = Write.Input("How much do you want the cooldown to be? (in seconds): ", Colors.purple_to_blue, interval=0)
     if "." in cooldown_input:
-        Write.Print("\nDetected a decimal in the cooldown, removing\n", Colors.red_to_yellow, interval=0)
+        Write.Print("\nDetected a decimal point in the cooldown, removing\n", Colors.red_to_yellow, interval=0)
         cooldown = cooldown_input.replace(".", "")
         Write.Print(f"New cooldown: {cooldown}\n", Colors.green_to_white, interval=0)
     if "0." in cooldown_input:
@@ -289,7 +276,6 @@ time.sleep(0.5)
 # Done!
 cls()
 time.sleep(0.3)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Finished!")
 if notifications:
     toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
                      "Finished!",
