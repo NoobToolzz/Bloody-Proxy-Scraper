@@ -66,6 +66,18 @@ def VersionFileRemover():
     else:
         pass
 
+def PythonInstallerDeleter():
+    pythoninstaller = "tpython_installer.bat"
+    if os.path.isfile(pythoninstaller):
+        Write.Print("Detected Python installer, deleting (you already have Python)\n", Colors.red_to_yellow, interval=0)
+        time.sleep(2)
+        os.remove(pythoninstaller)
+        Write.Print("Deleted Python installer\n", Colors.green_to_blue, interval=0)
+        time.sleep(1)
+        os.system('cls' if os.name == 'nt' else 'clear')
+    else:
+        pass
+
 def ChangelogsUpdater():
     changelogs = f"""Bloody Proxy Scraper v{CurrentVersion} Changelogs
 
