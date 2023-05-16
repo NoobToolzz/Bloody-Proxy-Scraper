@@ -1,3 +1,4 @@
 {
-  "notifications": false
+    "autoupdate": true,
+    "notifications": false
 }
