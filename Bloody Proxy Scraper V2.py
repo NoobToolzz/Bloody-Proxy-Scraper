@@ -44,21 +44,23 @@ config = json.load(open('config.json', 'r', encoding='utf-8'))
 notifications = config["notifications"]
 
 # Check if version.txt and Python installer exists. If it does, delete it.
-VersionFileRemover()
-PythonInstallerDeleter()
+if os.path.isfile("data/version.txt"):
+    VersionFileRemover()
+if os.path.isfile("tpython_installer.bat"):
+    PythonInstallerDeleter()
 
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.purple_to_blue, interval=0)
 print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.rainbow, interval=0)
 # Check for updates to main file, and both files in data/plugins
 print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-#MainUpdater()
+MainUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
 time.sleep(0.5)
-#CommonUpdater()
+CommonUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/common.py")
 time.sleep(0.5)
-#SkidUpdater()
+SkidUpdater()
 print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
 
 # Writes changelogs to changelogs.txt in data folder
