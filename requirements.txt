@@ -5,4 +5,3 @@ console
 AutoUpdate
 win10toast
 psutil
-webbrowser
