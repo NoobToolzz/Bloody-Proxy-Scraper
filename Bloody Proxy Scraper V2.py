@@ -42,6 +42,7 @@ banner = Add.Add(banner_ascii, text, center=True)
 # Load Configuration
 config = json.load(open('config.json', 'r', encoding='utf-8'))
 notifications = config["notifications"]
+autoupdate = config["autoupdate"]
 
 # Check if version.txt and Python installer exists. If it does, delete it.
 if os.path.isfile("data/version.txt"):
@@ -52,21 +53,28 @@ if os.path.isfile("tpython_installer.bat"):
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.purple_to_blue, interval=0)
 print(Colorate.Horizontal(Colors.purple_to_blue, Center.XCenter(banner)))
 Write.Print("------------------------------------------------------------------------------------------------------------------------", Colors.rainbow, interval=0)
-# Check for updates to main file, and both files in data/plugins
-print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
-MainUpdater()
-print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
-time.sleep(0.5)
-CommonUpdater()
-print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/common.py")
-time.sleep(0.5)
-SkidUpdater()
-print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
-
-# Writes changelogs to changelogs.txt in data folder
-ChangelogsUpdater()
-print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Written changelogs to data/changelogs.txt")
-time.sleep(2)
+if autoupdate:
+    # Check for updates to main file, and both files in data/plugins (if you have updater enabled in config ofc)
+    print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Checking for updates . . .")
+    MainUpdater()
+    print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated main file")
+    time.sleep(0.5)
+    CommonUpdater()
+    print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/common.py")
+    time.sleep(0.5)
+    SkidUpdater()
+    print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
+    ChangelogsUpdater()
+    print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Written changelogs to data/changelogs.txt")
+else:
+    # Writes changelogs to changelogs.txt in data folder (If you don't have updates enabled in)
+    print(f"{Fore.RED}[{Fore.RESET}ERROR{Fore.RED}]{Fore.RESET} Skipping updates as they are disabled in config.json")
+    time.sleep(1)
+    print(f"{Fore.YELLOW}[{Fore.RESET}INFO{Fore.YELLOW}]{Fore.RESET} Writing changelogs . . .")
+    time.sleep(0.5)
+    ChangelogsUpdater()
+    print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Written changelogs to data/changelogs.txt")
+    time.sleep(2)
 
 cls()
 # os.system('mode 85, 25')
