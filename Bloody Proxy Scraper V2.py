@@ -80,6 +80,7 @@ if autoupdate:
     print(f"{Fore.GREEN}[{Fore.RESET}SUCCESS{Fore.GREEN}]{Fore.RESET} Updated data/plugins/antiskid.py")
     ChangelogsUpdater()
     print(f"{Fore.GREEN}[{Fore.RESET}INFO{Fore.GREEN}]{Fore.RESET} Written changelogs to data/changelogs.txt")
+    time.sleep(2)
 else:
     # Writes changelogs to changelogs.txt in data folder (If you don't have updates enabled in)
     print(f"{Fore.RED}[{Fore.RESET}ERROR{Fore.RED}]{Fore.RESET} Skipping updates as they are disabled in config.json")
