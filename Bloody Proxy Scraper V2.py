@@ -8,10 +8,11 @@ try:
     toast = ToastNotifier()
 
     from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
-    from data.plugins.common import cls, qotls, pause, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, PythonInstallerDeleter, ChangelogsUpdater, CurrentVersion
+    from data.plugins.common import cls, qotls, pause, __version__, MainUpdater, CommonUpdater, SkidUpdater, VersionFileRemover, PythonInstallerDeleter, ChangelogsUpdater
     from data.plugins.antiskid import AntiSkid
 except:
     print("Error: An import was not found. Run setup.bat and try again.")
+    print("If you don't have Python please install it by running tpython_installer.bat")
     os.system("pause >nul")
     exit(1)
 
@@ -46,7 +47,7 @@ banner_ascii = f"""
 ██████╔╝██████╔╝███████╗
 ██╔══██╗██╔═══╝ ╚════██║
 ██████╔╝██║     ███████║
-╚═════╝ ╚═╝     ╚══════╝ v{CurrentVersion}        
+╚═════╝ ╚═╝     ╚══════╝ v{__version__}        
 
 """
 
@@ -110,14 +111,14 @@ if optional_cooldown == "y" or optional_cooldown == "Y" or optional_cooldown == 
 else:
     pass
 if notifications:
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+    toast.show_toast(f"Bloody Proxy Scraper v{__version__}",
                      "Started to scrape proxies.",
                      icon_path="data\icons\logo.ico",
                      duration=2)
 else:
     pass
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraping Proxies . . .")
+set_title(f"Bloody Proxy Scraper v{__version__} | Scraping Proxies . . .")
 Write.Print("[?] Scraping Proxies . . .\n", Colors.red_to_yellow, interval=0)
 
 # Opening/Adding proxy 
@@ -134,7 +135,7 @@ for url in http_urls:
     try:
         scrape_http = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped HTTP Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{__version__} | Scraped HTTP Proxies from {url}!")
         Write.Print(f"\n[{timenow}] | [?] Scraped HTTP Proxies from {url}\n", Colors.green_to_blue, interval=0)
         http_proxies.extend(scrape_http.text.strip().split('\n'))
         if optional_cooldown == "y" or optional_cooldown == "Y" or optional_cooldown == "yes" or optional_cooldown == "Yes" or optional_cooldown == "YES":
@@ -144,11 +145,11 @@ for url in http_urls:
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[{timenow}] | [!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped HTTP Proxies!")
+set_title(f"Bloody Proxy Scraper v{__version__} | Scraped HTTP Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped HTTP(S) Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
 if notifications:
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+    toast.show_toast(f"Bloody Proxy Scraper v{__version__}",
                      "Scraped HTTP(S) Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -162,7 +163,7 @@ for url in socks4_urls:
     try:
         scrape_socks4 = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS4 Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{__version__} | Scraped SOCKS4 Proxies from {url}!")
         Write.Print(f"\n[{timenow}] | [?] Scraped SOCKS4 Proxies from {url}\n", Colors.green_to_blue, interval=0)
         socks4_proxies.extend(scrape_socks4.text.strip().split('\n'))
         if optional_cooldown == "y" or optional_cooldown == "Y" or optional_cooldown == "yes" or optional_cooldown == "Yes" or optional_cooldown == "YES":
@@ -172,11 +173,11 @@ for url in socks4_urls:
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[{timenow}] | [!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS4 Proxies!")
+set_title(f"Bloody Proxy Scraper v{__version__} | Scraped SOCKS4 Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped SOCKS4 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
 if notifications:
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+    toast.show_toast(f"Bloody Proxy Scraper v{__version__}",
                      "Scraped SOCKS4 Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -190,7 +191,7 @@ for url in socks5_urls:
     try:
         scrape_socks5 = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS5 Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{__version__} | Scraped SOCKS5 Proxies from {url}!")
         Write.Print(f"\n[{timenow}] | [?] Scraped SOCKS5 Proxies from {url}\n", Colors.green_to_blue, interval=0)
         socks5_proxies.extend(scrape_socks5.text.strip().split('\n'))
         if optional_cooldown == "y" or optional_cooldown == "Y" or optional_cooldown == "yes" or optional_cooldown == "Yes" or optional_cooldown == "YES":
@@ -200,11 +201,11 @@ for url in socks5_urls:
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[{timenow}] | [!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped SOCKS5 Proxies!")
+set_title(f"Bloody Proxy Scraper v{__version__} | Scraped SOCKS5 Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped SOCKS5 Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
 if notifications:
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+    toast.show_toast(f"Bloody Proxy Scraper v{__version__}",
                      "Scraped SOCKS5 Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -218,7 +219,7 @@ for url in all_urls:
     try:
         scrape_all = requests.get(url)
         # Process the scraped proxies here
-        set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped ALL Proxies from {url}!")
+        set_title(f"Bloody Proxy Scraper v{__version__} | Scraped ALL Proxies from {url}!")
         Write.Print(f"\n[{timenow}] | [?] Scraped ALL Proxies from {url}\n", Colors.green_to_blue, interval=0)
         all_proxies.extend(scrape_all.text.strip().split('\n'))
         if optional_cooldown == "y" or optional_cooldown == "Y" or optional_cooldown == "yes" or optional_cooldown == "Yes" or optional_cooldown == "YES":
@@ -228,11 +229,11 @@ for url in all_urls:
     except requests.exceptions.RequestException as e:
         # Handle any errors that occur during the request
         Write.Print(f"[{timenow}] | [!] Error scraping proxies from {url}: {e}\n", Colors.red_to_yellow, interval=0)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Scraped ALL Proxies!")
+set_title(f"Bloody Proxy Scraper v{__version__} | Scraped ALL Proxies!")
 Write.Print(f"[{timenow}] | [?] Scraped ALL Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
 if notifications:
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+    toast.show_toast(f"Bloody Proxy Scraper v{__version__}",
                      "Scraped ALL Proxies!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -240,14 +241,14 @@ else:
     pass
 time.sleep(1)
 
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Finished Scraping Proxies!")
+set_title(f"Bloody Proxy Scraper v{__version__} | Finished Scraping Proxies!")
 Write.Print(f"[{timenow}] | [!] Finished Scraping Proxies!\n", Colors.green_to_white, interval=0)
 Write.Print("------------------------------------------------------------------------------------------------------------------------\n", Colors.rainbow, interval=0)
 time.sleep(1)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Writing Proxies . . .")
+set_title(f"Bloody Proxy Scraper v{__version__} | Writing Proxies . . .")
 Write.Print(f"[{timenow}] | [?] Writing Proxies In Files . . .\n\n", Colors.red_to_yellow, interval=0)
 if notifications:
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+    toast.show_toast(f"Bloody Proxy Scraper v{__version__}",
                      "Writing Proxies...",
                      icon_path="data\icons\logo.ico",
                      duration=1)
@@ -284,10 +285,10 @@ with open('proxies-all.txt','wb') as allp:
 Write.Print(f"[{timenow}] | [?] Wrote ALL Proxies!\n", Colors.red_to_yellow, interval=0)
 time.sleep(0.3)
 
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Wrote Proxies!")
+set_title(f"Bloody Proxy Scraper v{__version__} | Wrote Proxies!")
 Write.Print(f"[{timenow}] | [!] Finished Writing Proxies In Files!\n", Colors.green_to_white, interval=0)
 time.sleep(0.5)
-set_title(f"Bloody Proxy Scraper v{CurrentVersion} | Closing Files . . .")
+set_title(f"Bloody Proxy Scraper v{__version__} | Closing Files . . .")
 Write.Print(f"[{timenow}] | [?] Closing Files . . .\n", Colors.red_to_yellow, interval=0)
 # Closing Files
 http.close()
@@ -300,7 +301,7 @@ time.sleep(0.5)
 cls()
 time.sleep(0.3)
 if notifications:
-    toast.show_toast(f"Bloody Proxy Scraper v{CurrentVersion}",
+    toast.show_toast(f"Bloody Proxy Scraper v{__version__}",
                      "Finished!",
                      icon_path="data\icons\logo.ico",
                      duration=1)
