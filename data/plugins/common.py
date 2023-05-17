@@ -6,7 +6,7 @@ import AutoUpdate
 
 from pystyle import Write, Colors
 
-CurrentVersion = "2.0.9"
+__version__ = "2.0.9"
 qotls = ["When the joke is a true fact/statement.", 
          "In the middle of every difficulty, lies opportunity.", 
          "If I'm the wire, can you be my socket <3", 
@@ -25,7 +25,7 @@ def pause():
 def MainUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/Bloody%20Proxy%20Scraper%20V2.py")
-    AutoUpdate.set_current_version(CurrentVersion)
+    AutoUpdate.set_current_version(__version__)
 
     if not AutoUpdate.is_up_to_date():
         AutoUpdate.download("Bloody Proxy Scraper V2.py")
@@ -33,7 +33,7 @@ def MainUpdater():
 def CommonUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/data/plugins/common.py")
-    AutoUpdate.set_current_version(CurrentVersion)
+    AutoUpdate.set_current_version(__version__)
 
     if not AutoUpdate.is_up_to_date():
         AutoUpdate.download("common.py")
@@ -44,7 +44,7 @@ def CommonUpdater():
 def SkidUpdater():
     AutoUpdate.set_url("https://github.com/NoobToolzz/Bloody-Proxy-Scraper/blob/main/data/version.txt")
     AutoUpdate.set_download_link("https://raw.githubusercontent.com/NoobToolzz/Bloody-Proxy-Scraper/main/data/plugins/antiskid.py")
-    AutoUpdate.set_current_version(CurrentVersion)
+    AutoUpdate.set_current_version(__version__)
 
     if not AutoUpdate.is_up_to_date():
         AutoUpdate.download("antiskid.py")
@@ -79,7 +79,7 @@ def PythonInstallerDeleter():
         pass
 
 def ChangelogsUpdater():
-    changelogs = f"""Bloody Proxy Scraper v{CurrentVersion} Changelogs
+    changelogs = f"""Bloody Proxy Scraper v{__version__} Changelogs
 
 Additions / Changes:
 - Banner ASCII update
@@ -91,6 +91,6 @@ Additions / Changes:
 Deletions:
 - No deletions this update.
 """
-    with open('data/changelogs.txt', 'wb') as f:
+    with open(f'data/changelogs-v{__version__}.txt', 'wb') as f:
         f.write(changelogs.encode('utf-8'))
         f.close
