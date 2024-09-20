@@ -12,7 +12,7 @@ http_urls = [
     "https://www.proxy-list.download/api/v1/get?type=https",
     "https://www.proxyscan.io/download?type=http",
     "https://www.proxyscan.io/download?type=https",
-    "https://api.openproxylist.xyz/http.txt"
+    "https://api.openproxylist.xyz/http.txt",
 ]
 
 socks4_urls = [
@@ -24,7 +24,7 @@ socks4_urls = [
     "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks4.txt",
     "https://www.proxy-list.download/api/v1/get?type=socks4",
     "https://www.proxyscan.io/download?type=socks4",
-    "https://api.openproxylist.xyz/socks4.txt"
+    "https://api.openproxylist.xyz/socks4.txt",
 ]
 
 socks5_urls = [
@@ -37,8 +37,7 @@ socks5_urls = [
     "https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt",
     "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks5.txt",
     "https://www.proxy-list.download/api/v1/get?type=socks5",
-    "https://www.proxyscan.io/download?type=socks5",
-    "https://api.openproxylist.xyz/socks5.txt"
+    "https://api.openproxylist.xyz/socks5.txt",
 ]
 
 all_urls = [
@@ -86,5 +85,5 @@ all_urls = [
     "http://hack-hack.chat.ru/proxy/p4.txt",
     "http://olaf4snow.com/public/proxy.txt",
     "http://alexa.lr2b.com/proxylist.txt",
-    "http://inav.chat.ru/ftp/proxy.txt"
+    "http://inav.chat.ru/ftp/proxy.txt",
 ]
