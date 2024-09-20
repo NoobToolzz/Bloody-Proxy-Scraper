@@ -12,7 +12,6 @@ from rich.live import Live
 from rich.panel import Panel
 from rich.prompt import Prompt
 from rich.console import Console
-from rich.progress import Progress
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn
 
