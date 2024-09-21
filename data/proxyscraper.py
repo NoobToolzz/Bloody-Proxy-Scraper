@@ -10,7 +10,6 @@ from rich import print
 from pathlib import Path
 from rich.live import Live
 from rich.panel import Panel
-from rich.prompt import Prompt
 from rich.console import Console
 from rich.progress import Progress
 from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
@@ -52,19 +51,6 @@ class ProxyScraper:
 [bold purple]██████╔╝██║     ███████║[/bold purple]
 [bold purple]╚═════╝ ╚═╝     ╚══════╝[/bold purple] v{self.version}
 """
-
-    def get_cooldown(self):
-        optional_cooldown = Prompt.ask(
-            "[bold cyan]Do you want a cooldown between each scrape? (y/n)"
-        )
-        if optional_cooldown.lower() == "y":
-            cooldown_input = Prompt.ask(
-                "[bold cyan]How much do you want the cooldown to be? (in seconds)"
-            )
-            cooldown = int(cooldown_input.replace(".", ""))
-            print(f"[green]Cooldown set to: {cooldown} seconds")
-            return cooldown
-        return 0
 
     def scrape_proxies(self, urls, proxy_type, cooldown=0):
         proxies = []
