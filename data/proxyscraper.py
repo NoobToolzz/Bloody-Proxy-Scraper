@@ -132,9 +132,10 @@ class ProxyScraper:
     def check_proxy(self, proxy):
         try:
             response = requests.get(
-                "https://ipv4.games/claim?name=noobtoolzz",
+                url="https://ipv4.games/claim",
+                params={"name": "noobtoolzz"},
                 proxies={"http": proxy, "https": proxy},
-                timeout=10,
+                timeout=10
             )
             return proxy if response.status_code == 200 else None
         except:
