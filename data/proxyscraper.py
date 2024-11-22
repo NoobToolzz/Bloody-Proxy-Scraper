@@ -1,26 +1,13 @@
-import os
 import re
 import json
 import time
 import requests
 import datetime
-import concurrent.futures
 
 from rich import print
 from pathlib import Path
-from rich.live import Live
-from rich.panel import Panel
 from rich.console import Console
-from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn
-
-
-class Functions:
-    @staticmethod
-    def clean_up_cache():
-        for p in Path(".").rglob("*.py[co]"):
-            p.unlink()
-        for p in Path(".").rglob("__pycache__"):
-            p.rmdir()
+from rich.progress import Progress
 
 
 class ProxyScraper:
@@ -151,79 +138,3 @@ class ProxyScraper:
     def save_proxies(self, proxies):
         for proxy_type, (proxy_list, _) in proxies.items():
             self.write_proxies(f"{proxy_type}.txt", proxy_list)
-
-    def check_proxy(self, proxy):
-        try:
-            response = requests.get(
-                "https://ipv4.games/claim?name=noobtoolzz",
-                proxies={"http": proxy, "https": proxy},
-                timeout=10,
-            )
-            return proxy if response.status_code == 200 else None
-        except:
-            return None
-
-    def check_proxies(self, proxies):
-        threads = self.config["proxy_checking_threads"]
-        valid_proxies = []
-        total_proxies = len(proxies)
-
-        progress = Progress(
-            SpinnerColumn(),
-            "[progress.percentage]{task.percentage:>3.0f}%",
-            BarColumn(),
-            TextColumn("[bold blue]{task.completed}/{task.total} checked"),
-            TextColumn("[green]{task.fields[valid]} valid"),
-        )
-
-        task = progress.add_task("Checking", total=total_proxies, valid=0)
-
-        with Live(progress, refresh_per_second=10) as live:
-            with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
-                future_to_proxy = {
-                    executor.submit(self.check_proxy, proxy): proxy for proxy in proxies
-                }
-                for future in concurrent.futures.as_completed(future_to_proxy):
-                    result = future.result()
-                    if result:
-                        valid_proxies.append(result)
-                    progress.update(task, advance=1, valid=len(valid_proxies))
-
-        return valid_proxies
-
-    def run(self):
-        os.system("cls" if os.name == "nt" else "clear")
-        print(Panel(self.banner, expand=False))
-
-        proxies = self.scrape_all_proxies()
-        print("\n[bold green]Finished Scraping Proxies!")
-
-        if self.config["check_proxies"]:
-            print("\n[bold yellow]Checking proxies...")
-            all_proxies = proxies["all"][0]
-            valid_proxies = self.check_proxies(all_proxies)
-            proxies = {
-                "http": (valid_proxies, False),
-                "socks4": (valid_proxies, False),
-                "socks5": (valid_proxies, False),
-                "all": (valid_proxies, False),
-            }
-            print(
-                f"[green]Found {len(valid_proxies)} valid proxies out of {len(all_proxies)}"
-            )
-
-        os.system("cls" if os.name == "nt" else "clear")
-
-        if any(cooldown for _, cooldown in proxies.values()):
-            print("[green]Cooldown was applied during scraping.[/green]")
-        else:
-            print("[yellow]No cooldown was applied during scraping.[/yellow]")
-
-        self.save_proxies(proxies)
-
-        print("\n[bold green]Successfully Scraped and Saved Proxies!")
-        print(
-            "[cyan]Proxies are saved as http.txt, socks4.txt, socks5.txt, and all.txt"
-        )
-        print("[cyan]in the 'Scraped/[YYYY-MM-DD] [HH-MM]' folder.")
-        self.console.input("[bold cyan]Press Enter to exit...[/bold cyan]")
