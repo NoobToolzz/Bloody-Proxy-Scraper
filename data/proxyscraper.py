@@ -11,7 +11,6 @@ from pathlib import Path
 from rich.live import Live
 from rich.panel import Panel
 from rich.console import Console
-from data.sources import http_urls, socks4_urls, socks5_urls, all_urls
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn
 
 
@@ -29,6 +28,9 @@ class ProxyScraper:
         self.version = "2.1.0"
         self.console = Console()
         self.config = self.load_config()
+        self.http_urls, self.socks4_urls, self.socks5_urls, self.all_urls = (
+            self.load_sources()
+        )
         self.banner = self.create_banner()
 
     def load_config(self):
@@ -39,6 +41,27 @@ class ProxyScraper:
         except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
             print(f"[bold red]Error loading configuration: {e}")
             print("[yellow]Please ensure config.json exists and is properly formatted.")
+            exit(1)
+
+    def load_sources(self):
+        try:
+            sources_path = Path(__file__).parent / "sources.json"
+            with open(sources_path, "r", encoding="utf-8") as sources_file:
+                sources = json.load(sources_file)
+                return (
+                    sources.get("http", []),
+                    sources.get("socks4", []),
+                    sources.get("socks5", []),
+                    # Combine all URLs for the "all" category (temporary)
+                    sources.get("http", [])
+                    + sources.get("socks4", [])
+                    + sources.get("socks5", []),
+                )
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"[bold red]Error loading sources: {e}")
+            print(
+                "[yellow]Please ensure sources.json exists and is properly formatted."
+            )
             exit(1)
 
     def create_banner(self):
@@ -74,15 +97,15 @@ class ProxyScraper:
         print("\n[bold yellow]Scraping Proxies...")
         cooldown = self.config["cooldown_per_scrape"]
         http_proxies, http_cooldown = self.scrape_proxies(
-            http_urls, "HTTP(S)", cooldown
+            self.http_urls, "HTTP(S)", cooldown
         )
         socks4_proxies, socks4_cooldown = self.scrape_proxies(
-            socks4_urls, "SOCKS4", cooldown
+            self.socks4_urls, "SOCKS4", cooldown
         )
         socks5_proxies, socks5_cooldown = self.scrape_proxies(
-            socks5_urls, "SOCKS5", cooldown
+            self.socks5_urls, "SOCKS5", cooldown
         )
-        all_proxies, all_cooldown = self.scrape_proxies(all_urls, "ALL", cooldown)
+        all_proxies, all_cooldown = self.scrape_proxies(self.all_urls, "ALL", cooldown)
 
         return {
             "http": (http_proxies, http_cooldown),
@@ -192,9 +215,9 @@ class ProxyScraper:
         os.system("cls" if os.name == "nt" else "clear")
 
         if any(cooldown for _, cooldown in proxies.values()):
-            print("[yellow]Cooldown was applied during scraping.[/yellow]")
+            print("[green]Cooldown was applied during scraping.[/green]")
         else:
-            print("[green]No cooldown was applied during scraping.[/green]")
+            print("[yellow]No cooldown was applied during scraping.[/yellow]")
 
         self.save_proxies(proxies)
 

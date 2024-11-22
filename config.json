@@ -1,5 +1,5 @@
 {
     "cooldown_per_scrape": 0,
-    "check_proxies": true,
+    "check_proxies": false,
     "proxy_checking_threads": 50
 }
