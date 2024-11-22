@@ -32,15 +32,13 @@ def main():
 
     if any(cooldown for _, cooldown in proxies.values()):
         print("[green]Cooldown was applied during scraping.[/green]")
-    else:
-        print("[yellow]No cooldown was applied during scraping.[/yellow]")
 
     scraper.save_proxies(proxies)
 
     print("\n[bold green]Successfully Scraped and Saved Proxies!")
     print("[cyan]Proxies are saved as http.txt, socks4.txt, socks5.txt, and all.txt")
-    print("[cyan]in the 'Scraped/[YYYY-MM-DD] [HH-MM]' folder.")
-    scraper.console.input("[bold cyan]Press Enter to exit...[/bold cyan]")
+    print("[cyan]in the 'Scraped/[YYYY-MM-DD] [HH-MM-SS]' folder.")
+    scraper.console.input("[bold cyan]Press ENTER to exit...[/bold cyan]")
 
 
 if __name__ == "__main__":

@@ -15,9 +15,7 @@ class ProxyScraper:
         self.version = "2.1.0"
         self.console = Console()
         self.config = self.load_config()
-        self.http_urls, self.socks4_urls, self.socks5_urls, self.all_urls = (
-            self.load_sources()
-        )
+        self.http_urls, self.socks4_urls, self.socks5_urls = self.load_sources()
         self.banner = self.create_banner()
 
     def load_config(self):
@@ -39,10 +37,6 @@ class ProxyScraper:
                     sources.get("http", []),
                     sources.get("socks4", []),
                     sources.get("socks5", []),
-                    # Combine all URLs for the "all" category (temporary)
-                    sources.get("http", [])
-                    + sources.get("socks4", [])
-                    + sources.get("socks5", []),
                 )
         except (FileNotFoundError, json.JSONDecodeError) as e:
             print(f"[bold red]Error loading sources: {e}")
@@ -82,6 +76,7 @@ class ProxyScraper:
 
     def scrape_all_proxies(self):
         print("\n[bold yellow]Scraping Proxies...")
+
         cooldown = self.config["cooldown_per_scrape"]
         http_proxies, http_cooldown = self.scrape_proxies(
             self.http_urls, "HTTP(S)", cooldown
@@ -92,13 +87,18 @@ class ProxyScraper:
         socks5_proxies, socks5_cooldown = self.scrape_proxies(
             self.socks5_urls, "SOCKS5", cooldown
         )
-        all_proxies, all_cooldown = self.scrape_proxies(self.all_urls, "ALL", cooldown)
+
+        # Combine all scraped proxies
+        all_proxies = http_proxies + socks4_proxies + socks5_proxies
 
         return {
             "http": (http_proxies, http_cooldown),
             "socks4": (socks4_proxies, socks4_cooldown),
             "socks5": (socks5_proxies, socks5_cooldown),
-            "all": (all_proxies, all_cooldown),
+            "all": (
+                all_proxies,
+                False,
+            ),  # No need for cooldown flag since these are already scraped
         }
 
     def write_proxies(self, filename, proxies):
@@ -107,7 +107,7 @@ class ProxyScraper:
         scraped_dir.mkdir(exist_ok=True)
 
         now = datetime.datetime.now()
-        subfolder = now.strftime("[%Y-%m-%d] [%H-%M]")
+        subfolder = now.strftime("[%Y-%m-%d] [%H-%M-%S]")
         folder_path = scraped_dir / subfolder
         folder_path.mkdir(exist_ok=True)
 
@@ -115,8 +115,8 @@ class ProxyScraper:
         unique_proxies = list(set(proxies))
 
         # Validate proxies
-        valid_proxies = []
         # https://stackoverflow.com/questions/18546053/how-to-perfectly-match-a-proxy-with-regex
+        valid_proxies = []
         proxy_pattern = re.compile(
             r"^(?:(\w+)(?::(\w+))?@)?((?:\d{1,3})(?:\.\d{1,3}){3})(?::(\d{1,5}))?$"
         )
@@ -129,10 +129,14 @@ class ProxyScraper:
         with open(file_path, "w", encoding="utf-8") as f:
             f.write("\n".join(valid_proxies))
 
-        print(f"[green]Wrote {len(valid_proxies)} valid proxies to {filename}")
-        print(f"[yellow]Removed {len(proxies) - len(unique_proxies)} duplicate proxies")
         print(
-            f"[yellow]Removed {len(unique_proxies) - len(valid_proxies)} invalid proxies (not IP:PORT)"
+            f"[green]Wrote [bold green]{len(valid_proxies)} valid {filename.replace('.txt', '').upper()} proxies[/bold green]"
+        )
+        print(
+            f"[bold white][[bold yellow]-[bold white]] [yellow]Removed [cyan]{len(proxies) - len(unique_proxies)}[/cyan] duplicate proxies"
+        )
+        print(
+            f"[bold white][[bold yellow]-[bold white]] [yellow]Removed [cyan]{len(unique_proxies) - len(valid_proxies)}[/cyan] invalid proxies (not IP:PORT)"
         )
 
     def save_proxies(self, proxies):
