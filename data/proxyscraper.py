@@ -12,7 +12,7 @@ from rich.progress import Progress
 
 class ProxyScraper:
     def __init__(self):
-        self.version = "2.1.1"
+        self.version = "2.1.0"
         self.console = Console()
         self.config = self.load_config()
         self.http_urls, self.socks4_urls, self.socks5_urls = self.load_sources()
